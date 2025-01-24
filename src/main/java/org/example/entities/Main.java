@@ -91,36 +91,39 @@ public class Main
         listaPrestiti5.add(ElementoCatalogoDAO.get_elementoCatalogoById(29));
         listaPrestiti5.add(ElementoCatalogoDAO.get_elementoCatalogoById(31));
 
+        //CREO PRESTITI:
         Prestito p1 = new Prestito(u1,listaPrestiti1,LocalDate.of(2025,1,2),LocalDate.of(2025,1,10),LocalDate.of(2025,1,9));
         Prestito p2 = new Prestito(u3,listaPrestiti2, LocalDate.of(2025,1,20),LocalDate.of(2025,1,29),null);
         Prestito p3 = new Prestito(u4,listaPrestiti3, LocalDate.of(2025,1,10),LocalDate.of(2025,2,3), null);
         Prestito p4 = new Prestito(u6,listaPrestiti5,LocalDate.of(2025,1,7),LocalDate.of(2025,1,19),LocalDate.of(2025,1,18));
         Prestito p5 = new Prestito(u7,listaPrestiti4, LocalDate.of(2025,1,7),LocalDate.of(2025,1,20),null);
 
+        //AGGIUNGO PRESTITI AL DB:
         PrestitoDAO.save_prestito(p1);
         PrestitoDAO.save_prestito(p2);
         PrestitoDAO.save_prestito(p3);
         PrestitoDAO.save_prestito(p4);
         PrestitoDAO.save_prestito(p5);
 
+        //PROVO I METODI:
 
-       List <ElementoCatalogo> elementiPerAnno = Archivio.searchByAnnoDiPubblicazione(2019);
-       elementiPerAnno.forEach(e->System.out.println(e));
+      /* List <ElementoCatalogo> elementiPerAnno = Archivio.searchByAnnoDiPubblicazione(2019);
+       elementiPerAnno.forEach(e->System.out.println(e));*/
 
-       /*ElementoCatalogo elementoprova = Archivio.searchByISBN();
-       System.out.println(elementoprova);*/
+       /*ElementoCatalogo elementoProva = Archivio.searchByISBN();
+       System.out.println(elementoProva);*/
 
-       List <Libri> elementiPerAutore = Archivio.searchByAuthor("Dante");
-       elementiPerAutore.forEach(l->System.out.println(l));
+       /*List <Libri> elementiPerAutore = Archivio.searchByAuthor("Dante");
+       elementiPerAutore.forEach(l->System.out.println(l));*/
 
-       List <ElementoCatalogo> elementiPerTitolo = Archivio.searchByTitle("Hacker Journal");
-       System.out.println(elementiPerTitolo);
+       /*List <ElementoCatalogo> elementiPerTitolo = Archivio.searchByTitle("Hacker Journal");
+       System.out.println(elementiPerTitolo);*/
 
-        List<Prestito> e2 = Archivio.searchElementsInPrestitoByNumeroTesseraUtente(88);
-        System.out.println(e2);
+        /*List<Prestito> prestitiPersonali = Archivio.searchElementsInPrestitoByNumeroTesseraUtente(numeroTessera);
+        System.out.println (prestitiPersonali);*/
 
-        List<Prestito> prova = Archivio.searchPrestitiScadutieNonAncoraRestituiti(LocalDate.of(2025,1,4));
-        System.out.println(prova);
+       /* List<Prestito> prestitiScaduti = Archivio.searchPrestitiScadutieNonAncoraRestituiti(LocalDate.of(2025,1,4));
+        System.out.println(prestitiScaduti);*/
 
 
 
