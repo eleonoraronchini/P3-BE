@@ -2,6 +2,7 @@ package org.example.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -9,15 +10,16 @@ import java.util.List;
 public class Prestito {
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
     @ManyToOne (cascade = CascadeType.ALL)
     private Utente utente;
-    @ManyToMany
-    @JoinTable (
-            name = "elementi_presi_in_prestito",
-            joinColumns = @JoinColumn(name = "prestito_id"),
-            inverseJoinColumns = @JoinColumn(name = "elemento_catalogo_id")
-    )
+
+   @ManyToMany
+   @JoinTable(
+           name = "prestiti_per_elemento",
+           joinColumns = @JoinColumn(name = "prestito_id"),
+           inverseJoinColumns = @JoinColumn(name = "codiceISBN")
+   )
     private List<ElementoCatalogo> elementiCatalogo;
     @Column(name = "data_inizio_prestito", nullable = false)
     private LocalDate dataInizioPrestito;
@@ -77,11 +79,11 @@ public class Prestito {
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

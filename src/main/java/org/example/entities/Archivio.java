@@ -26,10 +26,11 @@ public class Archivio {
         em.getTransaction().commit();
     }
 
-    public static ElementoCatalogo searchByISBN(int ISBN){
+    public static ElementoCatalogo searchByISBN(int ISBN) {
         Query q = em.createQuery("SELECT e FROM ElementoCatalogo e WHERE e.codiceISBN = :ISBN");
         q.setParameter("ISBN", ISBN);
         return (ElementoCatalogo) q.getSingleResult();
+
     };
     public static List<ElementoCatalogo> searchByAnnoDiPubblicazione (int anno){
         Query q = em.createQuery("SELECT e FROM ElementoCatalogo e WHERE e.annoDiPubblicazione = :anno");

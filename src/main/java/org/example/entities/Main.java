@@ -51,7 +51,7 @@ public class Main
 
 
         //AGGIUNGO ELEMENTI AL DB:
-       /* ElementoCatalogoDAO.save_elementoCatalogo(l1);
+        ElementoCatalogoDAO.save_elementoCatalogo(l1);
         ElementoCatalogoDAO.save_elementoCatalogo(l2);
         ElementoCatalogoDAO.save_elementoCatalogo(l3);
         ElementoCatalogoDAO.save_elementoCatalogo(l4);
@@ -101,14 +101,14 @@ public class Main
         PrestitoDAO.save_prestito(p2);
         PrestitoDAO.save_prestito(p3);
         PrestitoDAO.save_prestito(p4);
-        PrestitoDAO.save_prestito(p5);*/
+        PrestitoDAO.save_prestito(p5);
 
 
        List <ElementoCatalogo> elementiPerAnno = Archivio.searchByAnnoDiPubblicazione(2019);
        elementiPerAnno.forEach(e->System.out.println(e));
 
-       ElementoCatalogo elementoprova = Archivio.searchByISBN(81);
-       System.out.println(elementoprova);
+       /*ElementoCatalogo elementoprova = Archivio.searchByISBN();
+       System.out.println(elementoprova);*/
 
        List <Libri> elementiPerAutore = Archivio.searchByAuthor("Dante");
        elementiPerAutore.forEach(l->System.out.println(l));

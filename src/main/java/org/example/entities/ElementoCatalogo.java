@@ -7,10 +7,9 @@ import java.util.List;
 @Entity
 @Table (name = "catalogo_prodotti")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class ElementoCatalogo {
+public class ElementoCatalogo {
     @Id
     @GeneratedValue
-    @Column (name = "codice_ISBN")
     protected int codiceISBN;
     @Column(nullable = false)
     protected String titolo;
@@ -19,7 +18,7 @@ public abstract class ElementoCatalogo {
     @Column(name = "numero_pagine", nullable = false)
     protected int numPagine;
     @ManyToMany(mappedBy = "elementiCatalogo")
-    List<Prestito> elementiPresiInPrestito = new ArrayList<>();
+    private List<Prestito> prestiti;
 
     public ElementoCatalogo (String titolo, int annoDiPubblicazione, int numPagine){
         this.titolo=titolo;
@@ -63,6 +62,14 @@ public abstract class ElementoCatalogo {
 
     public void setCodiceISBN(int codiceISBN) {
         this.codiceISBN = codiceISBN;
+    }
+
+    public List<Prestito> getPrestiti() {
+        return prestiti;
+    }
+
+    public void setPrestiti(List<Prestito> prestiti) {
+        this.prestiti = prestiti;
     }
 
     @Override
