@@ -16,7 +16,7 @@ public class Prestito {
     @JoinTable (
             name = "elementi_presi_in_prestito",
             joinColumns = @JoinColumn(name = "prestito_id"),
-            inverseJoinColumns = @JoinColumn(name = "utente_id")
+            inverseJoinColumns = @JoinColumn(name = "elemento_catalogo_id")
     )
     private List<ElementoCatalogo> elementiCatalogo;
     @Column(name = "data_inizio_prestito", nullable = false)
@@ -87,12 +87,12 @@ public class Prestito {
 
     @Override
     public String toString() {
-        return  "id" + id +
+        return  "idPrestito: " + id +
                 ", utente:" + utente +
                 ", elementiPrestati:" + elementiCatalogo +
                 ", dataInizioPrestito:" + dataInizioPrestito +
                 ", dataRestituzionePrevista:" + dataRestituzionePrevista +
-                ", getDataRestituzioneEffettiva:" + dataRestituzioneEffettiva
+                ", dataRestituzioneEffettiva:" + dataRestituzioneEffettiva
                 ;
     }
 }

@@ -3,6 +3,7 @@ package org.example.DAO;
 import org.example.entities.ElementoCatalogo;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class ElementoCatalogoDAO {
     private static EntityManager em;
@@ -20,6 +21,7 @@ public class ElementoCatalogoDAO {
         em.find(ElementoCatalogo.class, id);
         return null;
     }
+
 
     public void remove_elementoCatalogo (ElementoCatalogo e){
         em.getTransaction().begin();
