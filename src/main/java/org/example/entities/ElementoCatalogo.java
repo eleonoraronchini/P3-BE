@@ -10,14 +10,14 @@ import java.util.List;
 public class ElementoCatalogo {
     @Id
     @GeneratedValue
-    protected int codiceISBN;
+    private long codiceISBN;
     @Column(nullable = false)
-    protected String titolo;
+    private String titolo;
     @Column(name = "anno_di_pubblicazione", nullable = false)
-    protected int annoDiPubblicazione;
+    private int annoDiPubblicazione;
     @Column(name = "numero_pagine", nullable = false)
-    protected int numPagine;
-    @ManyToMany(mappedBy = "elementiCatalogo")
+    private int numPagine;
+    @ManyToMany(mappedBy = "elementiCatalogo", cascade = CascadeType.ALL)
     private List<Prestito> prestiti;
 
     public ElementoCatalogo (String titolo, int annoDiPubblicazione, int numPagine){
@@ -30,7 +30,8 @@ public class ElementoCatalogo {
     public ElementoCatalogo() {
     }
 
-    public int getCodiceISBN() {
+
+    public long getCodiceISBN() {
         return codiceISBN;
     }
 
@@ -60,7 +61,7 @@ public class ElementoCatalogo {
         this.titolo = titolo;
     }
 
-    public void setCodiceISBN(int codiceISBN) {
+    public void setCodiceISBN(long codiceISBN) {
         this.codiceISBN = codiceISBN;
     }
 

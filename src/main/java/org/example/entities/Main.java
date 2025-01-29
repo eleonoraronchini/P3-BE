@@ -19,7 +19,7 @@ public class Main
 
     public static void main( String[] args ) {
         //CREO ELEMENTI DAO:
-        ElementoCatalogoDAO elemento = new ElementoCatalogoDAO(em);
+       ElementoCatalogoDAO elemento = new ElementoCatalogoDAO(em);
         PrestitoDAO prestito = new PrestitoDAO(em);
         UtenteDAO utente = new UtenteDAO(em);
 
@@ -79,17 +79,17 @@ public class Main
         List<ElementoCatalogo> listaPrestiti4 = new ArrayList<ElementoCatalogo>();
         List<ElementoCatalogo> listaPrestiti5 = new ArrayList<ElementoCatalogo>();
 
-        listaPrestiti1.add(ElementoCatalogoDAO.get_elementoCatalogoById(21));
-        listaPrestiti1.add(ElementoCatalogoDAO.get_elementoCatalogoById(24));
-        listaPrestiti2.add(ElementoCatalogoDAO.get_elementoCatalogoById(23));
-        listaPrestiti2.add(ElementoCatalogoDAO.get_elementoCatalogoById(30));
-        listaPrestiti2.add(ElementoCatalogoDAO.get_elementoCatalogoById(28));
-        listaPrestiti3.add(ElementoCatalogoDAO.get_elementoCatalogoById(26));
-        listaPrestiti3.add(ElementoCatalogoDAO.get_elementoCatalogoById(25));
-        listaPrestiti4.add(ElementoCatalogoDAO.get_elementoCatalogoById(22));
-        listaPrestiti5.add(ElementoCatalogoDAO.get_elementoCatalogoById(27));
-        listaPrestiti5.add(ElementoCatalogoDAO.get_elementoCatalogoById(29));
-        listaPrestiti5.add(ElementoCatalogoDAO.get_elementoCatalogoById(31));
+        listaPrestiti1.add(ElementoCatalogoDAO.get_elementoCatalogoById(458));
+        listaPrestiti1.add(ElementoCatalogoDAO.get_elementoCatalogoById(459));
+        listaPrestiti2.add(ElementoCatalogoDAO.get_elementoCatalogoById(460));
+        listaPrestiti2.add(ElementoCatalogoDAO.get_elementoCatalogoById(462));
+        listaPrestiti2.add(ElementoCatalogoDAO.get_elementoCatalogoById(463));
+        listaPrestiti3.add(ElementoCatalogoDAO.get_elementoCatalogoById(468));
+        listaPrestiti3.add(ElementoCatalogoDAO.get_elementoCatalogoById(469));
+        listaPrestiti4.add(ElementoCatalogoDAO.get_elementoCatalogoById(467));
+        listaPrestiti5.add(ElementoCatalogoDAO.get_elementoCatalogoById(465));
+        listaPrestiti5.add(ElementoCatalogoDAO.get_elementoCatalogoById(466));
+        listaPrestiti5.add(ElementoCatalogoDAO.get_elementoCatalogoById(469));
 
         //CREO PRESTITI:
         Prestito p1 = new Prestito(u1,listaPrestiti1,LocalDate.of(2025,1,2),LocalDate.of(2025,1,10),LocalDate.of(2025,1,9));
@@ -104,26 +104,25 @@ public class Main
         PrestitoDAO.save_prestito(p3);
         PrestitoDAO.save_prestito(p4);
         PrestitoDAO.save_prestito(p5);
-
         //PROVO I METODI:
 
-      /* List <ElementoCatalogo> elementiPerAnno = Archivio.searchByAnnoDiPubblicazione(2019);
-       elementiPerAnno.forEach(e->System.out.println(e));*/
+      List <ElementoCatalogo> elementiPerAnno = Archivio.searchByAnnoDiPubblicazione(2019);
+       elementiPerAnno.forEach(e->System.out.println(e));
 
-       /*ElementoCatalogo elementoProva = Archivio.searchByISBN();
-       System.out.println(elementoProva);*/
+       ElementoCatalogo elementoProva = Archivio.searchByISBN(458);
+       System.out.println(elementoProva);
 
-       /*List <Libri> elementiPerAutore = Archivio.searchByAuthor("Dante");
-       elementiPerAutore.forEach(l->System.out.println(l));*/
+       List <Libri> elementiPerAutore = Archivio.searchByAuthor("Dante");
+       elementiPerAutore.forEach(l->System.out.println(l));
 
-       /*List <ElementoCatalogo> elementiPerTitolo = Archivio.searchByTitle("Hacker Journal");
-       System.out.println(elementiPerTitolo);*/
+       List <ElementoCatalogo> elementiPerTitolo = Archivio.searchByTitle("Hacker Journal");
+       System.out.println(elementiPerTitolo);
 
-        /*List<Prestito> prestitiPersonali = Archivio.searchElementsInPrestitoByNumeroTesseraUtente(numeroTessera);
-        System.out.println (prestitiPersonali);*/
+        List<Prestito> prestitiPersonali = Archivio.searchElementsInPrestitoByNumeroTesseraUtente(533);
+        System.out.println (prestitiPersonali);
 
-       /* List<Prestito> prestitiScaduti = Archivio.searchPrestitiScadutieNonAncoraRestituiti(LocalDate.of(2025,1,4));
-        System.out.println(prestitiScaduti);*/
+        List<Prestito> prestitiScaduti = Archivio.searchPrestitiScadutieNonAncoraRestituiti();
+        System.out.println(prestitiScaduti);
 
 
 
@@ -134,3 +133,4 @@ public class Main
 
     }
 }
+

@@ -26,7 +26,7 @@ public class Archivio {
         em.getTransaction().commit();
     }
 
-    public static ElementoCatalogo searchByISBN(int ISBN) {
+    public static ElementoCatalogo searchByISBN(long ISBN) {
         Query q = em.createQuery("SELECT e FROM ElementoCatalogo e WHERE e.codiceISBN = :ISBN");
         q.setParameter("ISBN", ISBN);
         return (ElementoCatalogo) q.getSingleResult();
@@ -49,20 +49,20 @@ public class Archivio {
 
     };
     public static List<Prestito> searchElementsInPrestitoByNumeroTesseraUtente(int numeroDiTessera) {
-        LocalDate today = LocalDate.now();
         Query q = em.createQuery(
-                "SELECT p FROM Prestito p WHERE p.utente.numeroDiTessera = :numeroDiTessera AND p.dataRestituzionePrevista > :today AND p.dataRestituzioneEffettiva IS NULL"
+                "SELECT p FROM Prestito p WHERE p.utente.numeroDiTessera = :numeroDiTessera AND p.dataRestituzioneEffettiva IS NULL"
         );
         q.setParameter("numeroDiTessera", numeroDiTessera);
-        q.setParameter("today", today);
 
-        return q.getResultList();
+        List<Prestito> prestiti = q.getResultList();
+
+        return prestiti;
     }
 
-    LocalDate today = LocalDate.now();
-    public static List<Prestito> searchPrestitiScadutieNonAncoraRestituiti(LocalDate today ){
-        Query q = em.createQuery("SELECT p FROM Prestito p WHERE  p.dataRestituzionePrevista < :today AND p.dataRestituzioneEffettiva IS NULL ");
-        q.setParameter("today", today);
+
+    public static List<Prestito> searchPrestitiScadutieNonAncoraRestituiti(){
+        Query q = em.createQuery("SELECT p FROM Prestito p WHERE  p.dataRestituzionePrevista < CURRENT_DATE AND p.dataRestituzioneEffettiva IS NULL ");
+
         return q.getResultList();
     };
 

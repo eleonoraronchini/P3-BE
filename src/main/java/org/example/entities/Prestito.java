@@ -10,11 +10,11 @@ import java.util.List;
 public class Prestito {
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
     @ManyToOne (cascade = CascadeType.ALL)
     private Utente utente;
 
-   @ManyToMany
+   @ManyToMany (cascade = CascadeType.ALL)
    @JoinTable(
            name = "prestiti_per_elemento",
            joinColumns = @JoinColumn(name = "prestito_id"),
@@ -79,11 +79,11 @@ public class Prestito {
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

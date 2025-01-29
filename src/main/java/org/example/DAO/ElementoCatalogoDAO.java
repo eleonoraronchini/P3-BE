@@ -17,9 +17,9 @@ public class ElementoCatalogoDAO {
         em.persist(e);
         em.getTransaction().commit();
     }
-    public static ElementoCatalogo get_elementoCatalogoById(int id){
-        em.find(ElementoCatalogo.class, id);
-        return null;
+    public static ElementoCatalogo get_elementoCatalogoById(long id){
+       return em.find(ElementoCatalogo.class, id);
+
     }
 
 
